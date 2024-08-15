@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Lab Project - Self Driving Lab</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #fff;
+            color: #333;
+            padding: 1em;
+            text-align: center;
+            margin-bottom: 1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            max-width: 80%;
+            margin: 1em auto;
+            position: relative;
+        }
+        header .text {
+            display: inline-block;
+            width: calc(100% - 200px);
+        }
+        header img {
+            width: 200px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .container {
+            width: 80%;
+            margin: 2em auto;
+            background-color: white;
+            padding: 2em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        .section {
+            margin-bottom: 2em;
+        }
+        .image {
+            text-align: center;
+            margin: 1em 0;
+        }
+        .image img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #e0e0e0;
+            padding: 10px;
+        }
+        .video {
+            text-align: center;
+            margin: 2em 0;
+        }
+        .video a {
+            display: inline-block;
+            background-color: #0073e6;
+            color: white;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .split-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .split-section .text {
+            width: 60%;
+        }
+        .split-section .image {
+            width: 40%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="text">
+            <h1>Self Driving Lab</h1>
+            <p>Biology lab programmed to function autonomously with specified workflow</p><p><b>My work as a Software Engineer Intern</b></p>
+        </div>
+        <img src="assets/imgs/Argonnelablogo.PNG" alt="Argonne National Laboratory Logo">
+    </header>
+    <div class="container">
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>The Autonomous Discovery Self Driving Laboratories (AD-SDL) project at Argonne National Laboratory aims to automate scientific processes using standard instruments and collaborative robots. The project’s primary focus is on the development, implementation, and commissioning of various instruments to facilitate automated workflows within the Rapid Prototyping Laboratory. This overview outlines the work I accomplished in my 10 week long Software Engineering Internship and the significance of the results.</p>
+        </div>
+        <div class="section">
+            <h2>Project Setup</h2>
+            <h3>Initial Setup</h3>
+            <p>The project began with acquiring the 3 instruments used for biology experiments to be programmed, analyzing their current functionality, and constructing three mobile carts to house the machines used in the lab, allowing for flexible and efficient rearrangement as required by different experimental setups.</p>
+        </div>
+        <div class="section split-section">
+            <div class="text">
+                <h2>Instrument Drivers Development</h2>
+                <h3>Sealer Driver</h3>
+                <p>One of the key instruments in the project is the Azenta Sealer, an instrument used to provide a seal over microplates. The development team enabled the Sealer to execute specific commands via a serial connection. Using PuTTY for initial testing, the team verified the Sealer’s ability to interpret and respond to commands. A Python program was then developed to facilitate this communication, structuring the driver as a class with functions corresponding to particular commands such as sealing or adjusting temperature.</p>
+                <p>Although the Sealer encountered a malfunction during testing, preventing further development of feedback interpretation functionality, the foundational work laid the groundwork for future improvements.</p>
+                <h3>Peeler Driver</h3>
+                <p>Developing the driver for the Brooks XPeel, an instrument that removes the seal off of microplates, presented a unique challenge. Initially, the Peeler could only provide feedback but not receive commands. After extensive troubleshooting and research, the issue was identified as the RS232 to USB adapter cable. Replacing it with a direct RS232 to USB A cable resolved the communication problem, allowing the driver to send commands and interpret feedback, including error messages displayed as two-digit codes.</p>
+            </div>
+            <div class="image">
+                <img src="assets/imgs/peeler:seeler.png" alt="Sealer and Peeler">
+            </div>
+        </div>
+        <div class="section split-section">
+            <div class="image">
+                <img src="assets/imgs/stacker.png" alt="Plate Stacker">
+            </div>
+            <div class="text">
+                <h3>Plate Stacker Driver</h3>
+                <p>The development of the Hudson Plate Stacker driver involved identifying approximately 20 different commands from its Visual Basic code. These commands were used to create a driver that instructed the Plate Stacker to perform specific actions, such as grabbing a plate from a specified stack and placing it on the exchange platform.</p>
+            </div>
+        </div>
+        <div class="section split-section">
+            <div class="text">
+                <h2>Building ROS Structures</h2>
+                <h3>Learning and Implementation</h3>
+                <p>With guidance from a graduate student on the project, the development team learned the basics of Robot Operating System (ROS). Key ROS components such as Nodes, Services, and Topics were used to design the ROS structures for the Peeler and Sealer, creating nodes that managed actions and interpreted feedback<br><br>For the Peeler, the Description Service contained command information, which the Master Node interpreted and used to send a string to the Action Service. This string corresponded to the user-requested action. The Peeler Node then executed the commands, stored any important feedback, and updated the relevant ROS topics and services.</p>
+            </div>
+            <div class="image">
+                <img src="assets/imgs/ros_diagram.png" alt="ROS Structure Diagram">
+            </div>
+        </div>
+        <div class="section">
+            <h2>Conclusion</h2>
+            <p>By the end of the project, the lab's Sealer, Peeler, and Plate Stacker were remotely controllable through the development of Python drivers and ROS structures. This achievement significantly advanced the AD-SDL project’s goal of laboratory automation. The equipment is now part of a cohesive automated system, with potential for future enhancements, including automated error detection using visual data from the integrated camera module.</p>
+            <p>The project has greatly enhanced the team’s skills and knowledge. Proficiency in Python has improved through daily practice, and the importance of clear code documentation and effective communication has been emphasized. The experience of developing ROS structures has provided a solid foundation for future work in robotics and automation.</p>
+            <div class="video">
+                <a href="https://www.youtube.com/watch?v=5V3Cg5rJZOg&ab_channel=SanjivParthasarathy" target="_blank">Watch the Demo Video</a>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Acknowledgements</h2>
+            <p>The development team extends gratitude to Dr. Rafael Vescovi for his guidance and support throughout the project. Special thanks to Eric Codrea for his mentorship and assistance with ROS, and to Dr. Ben Blaiszik and Dr. Ian Foster for facilitating this project and providing valuable insights.</p>
+        </div>
+    </div>
+</body>
+</html>

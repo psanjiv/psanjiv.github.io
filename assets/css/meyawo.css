@@ -627,6 +627,7 @@ pre code {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  padding-bottom: 15px;
 }
 
 .col {
@@ -12232,3 +12233,85 @@ pre .code {
 .section-lg {
   padding: 100px 0 !important;
 }
+
+
+
+
+  /* Custom styles for project boxes */
+.project-container {
+  background-color: #f9f9f9; /* Slightly darker shade of white */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Minimal shadow */
+  margin: 10px;
+  overflow: hidden;
+}
+
+.project-box {
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out; /* Smooth animation */
+}
+
+.project-image {
+    padding: 15px; /* Adjust padding as needed */
+    background-color: #f9f9f9; /* Match the box color */
+}
+
+.project-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.project-details {
+    padding: 10px;
+}
+
+.project-details h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.project-details p {
+    font-size: 1rem;
+    color: black;
+    line-height: 1.4;
+}
+
+.project-box:hover {
+    transform: translateY(-5px); /* Fade up animation on hover */
+}
+
+
+.info-bubble {
+  position: relative;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: lightgray; /* Light gray background */
+  color: black; /* Black text */
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  max-width: 90%;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-container:hover .info-bubble {
+  background-color: rgba(0, 0, 0, 0.95); /* Slightly darker on hover */
+  color: white; /* White text on hover */
+}
+
+.info {
+  padding-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #695aa6;
+}
+
